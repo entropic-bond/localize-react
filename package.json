@@ -1,5 +1,5 @@
 {
-  "name": "entropic-bond-localize-react",
+  "name": "@entropic-bond/localize-react",
   "version": "0.1.0",
   "publishConfig": {
     "access": "public",
