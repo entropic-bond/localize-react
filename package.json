@@ -31,7 +31,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/entropic-bond/entropic-bond.git"
+    "url": "git+https://github.com/entropic-bond/localize-react.git"
   },
   "keywords": [
     "localization",
