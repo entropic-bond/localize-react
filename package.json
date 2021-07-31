@@ -1,0 +1,70 @@
+{
+  "name": "entropic-bond-localize-react",
+  "version": "0.1.0",
+  "publishConfig": {
+    "access": "public",
+    "branches": [
+      "master"
+    ]
+  },
+  "release": {
+    "plugins": [
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      "@semantic-release/git",
+      "@semantic-release/github"
+    ]
+  },
+  "description": "Localize react components",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "test": "jest",
+    "build": "npm run build-cjs",
+    "prepare": "npm run build",
+    "build-ts": "cp -r ./src/ ./lib",
+    "build-cjs": "tsc -p tsconfig-cjs.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/entropic-bond/entropic-bond.git"
+  },
+  "keywords": [
+    "localization",
+    "react"
+  ],
+  "author": "Josep Seto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/entropic-bond/localize-react/issues"
+  },
+  "homepage": "https://github.com/entropic-bond/localize-react#readme",
+  "devDependencies": {
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/git": "^9.0.0",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.0.0",
+    "@testing-library/user-event": "^13.2.1",
+    "@types/jest": "^26.0.23",
+    "@types/react": "^17.0.15",
+    "@types/react-dom": "^17.0.9",
+    "fetch-mock": "^9.11.0",
+    "git-branch-is": "^4.0.0",
+    "husky": "^6.0.0",
+    "jest": "^27.0.5",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "semantic-release": "^17.4.4",
+    "ts-jest": "^27.0.3",
+    "typescript": "^4.3.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "if git-branch-is master; then npm test; fi"
+    }
+  }
+}
