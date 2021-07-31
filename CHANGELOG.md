@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/entropic-bond/localize-react/compare/v1.0.0...v1.0.1) (2021-07-31)
+
+
+### Bug Fixes
+
+* exports ([1a6aede](https://github.com/entropic-bond/localize-react/commit/1a6aede72593ee01e052605586e742256324cf92))
+
 # 1.0.0 (2021-07-31)
 
 
