@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/entropic-bond/localize-react/compare/v1.0.1...v1.1.0) (2021-09-10)
+
+
+### Features
+
+* implement fillTemplate former replaceValues ([5cc50d1](https://github.com/entropic-bond/localize-react/commit/5cc50d17e5b3a1dc2c3935a0aa6f46c669086b99))
+
 ## [1.0.1](https://github.com/entropic-bond/localize-react/compare/v1.0.0...v1.0.1) (2021-07-31)
 
 
