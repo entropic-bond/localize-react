@@ -1,3 +1,11 @@
+## [1.3.1](https://github.com/entropic-bond/localize-react/compare/v1.3.0...v1.3.1) (2022-03-27)
+
+
+### Bug Fixes
+
+* remove utils ([3048f27](https://github.com/entropic-bond/localize-react/commit/3048f271b16fdf838b078bd3608b8bb47a7a9b1e))
+* remove utils export ([a147946](https://github.com/entropic-bond/localize-react/commit/a147946adf0dc5c4dc98fe43c058510cc79d40a0))
+
 # [1.3.0](https://github.com/entropic-bond/localize-react/compare/v1.2.0...v1.3.0) (2022-03-27)
 
 
