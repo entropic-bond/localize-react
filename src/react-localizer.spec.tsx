@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import { render } from '@testing-library/react'
 import fetchMock from 'fetch-mock'
-import { Locale } from './locale'
+import { Locale, LocaleEntries } from './locale'
 import { localize, LocalizedState, LocalizedComponent, useLocale } from './localized-component'
 
 interface SomeState extends LocalizedState {
 	someState: string
 }
+
+let loadedSpy = jest.fn()
 
 @localize( 'LocalizedWithDecorator' )
 class LocalizedWithDecorator extends Component<{}, SomeState> {
@@ -15,6 +17,10 @@ class LocalizedWithDecorator extends Component<{}, SomeState> {
 		this.state = {
 			someState: 'a decorator nice starting point'
 		}
+	}
+
+	onLoadLocale( locale: LocaleEntries ) {
+		loadedSpy( locale )
 	}
 
 	render() {
@@ -34,6 +40,10 @@ class LocalizedWithClass extends LocalizedComponent<{}, SomeState> {
 			someState: 'a class nice starting point',
 			...this.state
 		}
+	}
+
+	onLoadLocale( locale: LocaleEntries ): void {
+		loadedSpy( locale )	
 	}
 
 	render() {
@@ -81,6 +91,7 @@ describe( 'React Component Localizer', ()=>{
 
 	afterEach(()=>{
 		fetchMock.restore();
+		loadedSpy.mockReset()
 	});
 
 	it( 'should render localized word with decorator', async ()=>{
@@ -126,5 +137,20 @@ describe( 'React Component Localizer', ()=>{
 		const elem = await wrapper.findByText( 'Casa es maison' )
 		expect( elem ).toBeInTheDocument()
 	})
+
+	it( 'should notify on locale loaded with decorator', async ()=>{
+		const wrapper = render( <LocalizedWithDecorator/> )
+
+		await wrapper.findByText( 'Casa es maison' )
+		expect( loadedSpy ).toHaveBeenCalledWith( expect.objectContaining({ house: 'maison' }))
+	})
+	
+	it( 'should notify on locale loaded with class', async ()=>{
+		const wrapper = render( <LocalizedWithClass/> )
+
+		await wrapper.findByText( 'Casa es albergo' )
+		expect( loadedSpy ).toHaveBeenCalledWith( expect.objectContaining({ house: 'albergo' }))
+	})
+	
 	
 })

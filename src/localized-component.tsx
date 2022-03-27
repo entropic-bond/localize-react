@@ -27,7 +27,12 @@ export abstract class LocalizedComponent<P={}, S extends LocalizedState=Localize
 		Promise.all([
 			Locale.instance.get( this.className() ),
 			Locale.instance.get( 'Generic' )
-		]).then( resp => this.setState({ locale: { ...resp[0], ...resp[1] } } ))
+		]).then( resp => {
+			const locale = { ...resp[0], ...resp[1] }
+
+			this.setState({ locale  })
+			this.onLoadLocale( locale )
+		})
 	}
 
 	/**
@@ -35,6 +40,12 @@ export abstract class LocalizedComponent<P={}, S extends LocalizedState=Localize
 	 * with the class name.
  	 */
 	abstract className(): string
+
+	/**
+	 * Override this method to get a notification when the locale has been loaded
+	 * @param locale the loaded locale
+	 */
+	onLoadLocale( locale: LocaleEntries ) {}
 }
 
 /**
@@ -56,7 +67,11 @@ export function localize( className: string ) {
 				loadLocale = Promise.all([
 					Locale.instance.get( className ),
 					Locale.instance.get( 'Generic' )
-				]).then( resp => this['setState'](()=>({ locale: { ...resp[0], ...resp[1] } } )))
+				]).then( resp => {
+					const locale = { ...resp[0], ...resp[1] }
+					this['setState']({ locale })
+					this['onLoadLocale'] && this['onLoadLocale']( locale )
+				})
 		}
 	}
 }
