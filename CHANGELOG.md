@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/entropic-bond/localize-react/compare/v1.2.0...v1.3.0) (2022-03-27)
+
+
+### Features
+
+* notify on locale loaded ([071bfec](https://github.com/entropic-bond/localize-react/commit/071bfec63f9702a6225172c0a22a8e416db8ba9e))
+
 # [1.2.0](https://github.com/entropic-bond/localize-react/compare/v1.1.0...v1.2.0) (2022-03-27)
 
 
