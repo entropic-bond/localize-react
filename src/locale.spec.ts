@@ -11,6 +11,10 @@ describe( 'Locale', ()=> {
 			"moduleA": {
 				"bye": "Bye",
 				"goodMorning": "Good Morning"
+			},
+			"pluralizeExceptions": {
+				"mouse": "mice",
+				"foot": "feet"
 			}
 		}})
 		fetchMock.mock('locales/es.json', ()=> { return {
@@ -42,5 +46,49 @@ describe( 'Locale', ()=> {
 		Locale.instance.get( 'hi' )
 		Locale.instance.get( 'moduleA' )['bye']
 		expect( fetchMock.calls('locales/en.json').length ).toBe( 1 )
+	})
+
+	describe( 'Pluralizer', ()=>{
+		
+		it( 'should pluralize by default', async ()=>{
+			expect( await Locale.instance.pluralize( 'apple' ) ).toEqual( 'apples' )
+		})
+
+		it( 'should pluralize exceptions', async () => {
+			expect( await Locale.instance.pluralize( 'mouse' ) ).toEqual( 'mice' )
+		})
+		
+		it( 'should not pluralize on amount equal to 1', async () => {
+			expect( await Locale.instance.pluralize( 'apple', 1 ) ).toEqual( 'apple' )
+		})
+		
+		it( 'should pluralize on amounts greather than 1', async () => {
+			expect( await Locale.instance.pluralize( 'apple', 2 ) ).toEqual( 'apples' )
+			expect( await Locale.instance.pluralize( 'apple', 3 ) ).toEqual( 'apples' )
+		})
+		
+		it( 'should pluralize on negative amounts', async () => {
+			expect( await Locale.instance.pluralize( 'apple', -1 ) ).toEqual( 'apples' )
+			expect( await Locale.instance.pluralize( 'apple', -2 ) ).toEqual( 'apples' )
+			expect( await Locale.instance.pluralize( 'apple', -3 ) ).toEqual( 'apples' )
+		})
+
+		it( 'should pluralize on 0 amount', async () => {
+			expect( await Locale.instance.pluralize( 'apple', 0 ) ).toEqual( 'apples' )
+		})
+
+		it( 'should use provided pluralize function', async ()=>{
+			expect( 
+				await Locale.instance.pluralize( 'city', 0, Locale.rules.endsY ) 
+			).toEqual( 'cities' )
+		})
+		
+		it( 'should use rules', async ()=>{
+			Locale.useRule( Locale.rules.endsY, 'en' )
+
+			expect( 
+				await Locale.instance.pluralize( 'city' ) 
+			).toEqual( 'cities' )
+		})		
 	})
 })

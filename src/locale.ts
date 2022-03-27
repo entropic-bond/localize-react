@@ -7,6 +7,8 @@ export interface LocaleEntries {
 	[ key: string ]: string
 }
 
+type Rule = ( word: string, locale: string ) => string
+
 export class Locale {
 	private constructor( config: LocaleConfig ) {
 		this._table = null
@@ -22,11 +24,20 @@ export class Locale {
 		return this._instance
 	}
 
-	static pluralize( word: string, amount: number, pluralizer: string ) {
-		if ( amount > 1 ) {
-			return word + pluralizer
+	async pluralize( word: string, amount: number = 0, pluralizer?: (word: string, locale: string ) => string ) {
+		if ( amount === 1 ) return word
+
+		let plural = ( await this.get( 'pluralizeExceptions' ) )?.[ word ]
+		if ( plural ) return plural
+
+		plural = pluralizer?.( word, this._lang )
+		let i = 0
+		const rules = Locale._registeredRules[ this._lang ]
+		while ( !plural && rules && i < rules.length ) {
+			plural = rules[ i++ ]( word, this._lang )
 		}
-		return word
+
+		return plural || word + 's'
 	}
 
 	static config( config: LocaleConfig ) {
@@ -68,8 +79,21 @@ export class Locale {
 		return this._lang
 	}
 
+	static useRule( rule: Rule, locale: string ) {
+		if ( !Locale._registeredRules[ locale ] ) Locale._registeredRules[ locale ] = []
+		Locale._registeredRules[ locale ].push( rule )
+	}
+
+	static rules = {
+		endsY: ( word: string, locale: string ) => {
+			if ( locale!=='en' ) return
+			return word.slice(-1) === 'y'? word.slice( 0, -1 ) + 'ies' : word
+		}
+	}
+
 	private static _instance: Locale = null
 	private static _registeredConfig: LocaleConfig = {} as LocaleConfig
+	private static _registeredRules: {[ locale: string ]: Rule[] } = {}
 	private _lang: string
 	private _localePath: string
 	private _pendingPromise = null
