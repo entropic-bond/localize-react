@@ -56,7 +56,7 @@ export function localize( className: string ) {
 				loadLocale = Promise.all([
 					Locale.instance.get( className ),
 					Locale.instance.get( 'Generic' )
-				]).then( resp => this['setState']({ locale: { ...resp[0], ...resp[1] } } ))
+				]).then( resp => this['setState'](()=>({ locale: { ...resp[0], ...resp[1] } } )))
 		}
 	}
 }

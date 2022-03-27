@@ -61,10 +61,7 @@ function LocalizedWithHook() {
 }
 
 describe( 'React Component Localizer', ()=>{
-	beforeEach(async ()=>{
-		Locale.config({
-			localePath: 'locales' 
-		})
+	beforeEach(()=>{
 		fetchMock.mock('locales/en.json', ()=> { return {
 			"hi": "Hello",
 			"LocalizedWithClass": {
@@ -77,6 +74,9 @@ describe( 'React Component Localizer', ()=>{
 				"house": "morada"
 			}
 		}})
+		Locale.config({
+			localePath: 'locales' 
+		})
 	})
 
 	afterEach(()=>{
@@ -114,6 +114,16 @@ describe( 'React Component Localizer', ()=>{
 		const wrapper = render( <LocalizedWithHook/> )
 
 		const elem = await wrapper.findByText( 'Casa es morada' )
+		expect( elem ).toBeInTheDocument()
+	})
+
+	it( 'should wait locale json to load', async ()=>{
+		Locale.config({
+			locale: 'en'
+		})
+		const wrapper = render( <LocalizedWithDecorator/> )
+
+		const elem = await wrapper.findByText( 'Casa es maison' )
 		expect( elem ).toBeInTheDocument()
 	})
 	
