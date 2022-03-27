@@ -1,3 +1,15 @@
+# [1.2.0](https://github.com/entropic-bond/localize-react/compare/v1.1.0...v1.2.0) (2022-03-27)
+
+
+### Bug Fixes
+
+* attempt to fix React warning about unmounted component ([bd7d70b](https://github.com/entropic-bond/localize-react/commit/bd7d70b8eb4be48515d8401bd83cc8c5e29484d7))
+
+
+### Features
+
+* pluralizer ([42e408a](https://github.com/entropic-bond/localize-react/commit/42e408ac8ecbd339ca3e43baf6699a83fd3f5b01))
+
 # [1.1.0](https://github.com/entropic-bond/localize-react/compare/v1.0.1...v1.1.0) (2021-09-10)
 
 
