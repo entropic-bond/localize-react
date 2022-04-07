@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/entropic-bond/localize-react/compare/v1.3.1...v1.3.2) (2022-04-07)
+
+
+### Bug Fixes
+
+* upgrade to react 18 ([0accbbb](https://github.com/entropic-bond/localize-react/commit/0accbbbf9d68c4f4f228dd4201d116cf6ff4f4f0))
+
 ## [1.3.1](https://github.com/entropic-bond/localize-react/compare/v1.3.0...v1.3.1) (2022-03-27)
 
 
