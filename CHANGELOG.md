@@ -1,3 +1,10 @@
+## [1.3.4](https://github.com/entropic-bond/localize-react/compare/v1.3.3...v1.3.4) (2022-04-26)
+
+
+### Bug Fixes
+
+* pluralizer is not a promise ([32c3a8b](https://github.com/entropic-bond/localize-react/commit/32c3a8bef28d1fe3c0b23439b2636be343be5d3f))
+
 ## [1.3.3](https://github.com/entropic-bond/localize-react/compare/v1.3.2...v1.3.3) (2022-04-21)
 
 
