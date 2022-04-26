@@ -24,13 +24,19 @@ export class Locale {
 		return this._instance
 	}
 
-	async pluralize( word: string, amount: number = 0, pluralizer?: (word: string, locale: string ) => string ) {
+	pluralize( word: string, amount: number = 0, pluralizer?: LocaleEntries | ( (word: string, locale: string ) => string ) ) {
 		if ( amount === 1 ) return word
 
-		let plural = ( await this.get( 'pluralizeExceptions' ) )?.[ word ]
-		if ( plural ) return plural
+		let plural: string
 
-		plural = pluralizer?.( word, this._lang )
+		if ( typeof pluralizer !== 'function' ) {
+			plural = pluralizer?.[ word ]
+			if ( plural ) return plural
+		}
+		else {
+			plural = pluralizer?.( word, this._lang )
+		}
+
 		let i = 0
 		const rules = Locale._registeredRules[ this._lang ]
 		while ( !plural && rules && i < rules.length ) {
