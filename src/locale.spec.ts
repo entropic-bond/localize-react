@@ -88,17 +88,36 @@ describe( 'Locale', ()=> {
 		})
 
 		it( 'should use provided pluralize function', ()=>{
+			const endsY = ( word: string, locale: string ) => {
+				if ( locale !== 'en' ) return
+				return word.slice( -1 ) === 'y' ? word.slice( 0, -1 ) + 'ies' : word
+			}
+
 			expect( 
-				Locale.instance.pluralize( 'city', 0, Locale.rules.endsY ) 
+				Locale.instance.pluralize( 'city', 0, endsY ) 
 			).toEqual( 'cities' )
 		})
 		
 		it( 'should use rules', ()=>{
-			Locale.useRule( Locale.rules.endsY, 'en' )
-
-			expect( 
-				Locale.instance.pluralize( 'city' ) 
+			expect(
+				Locale.instance.pluralize( 'city' )
 			).toEqual( 'cities' )
+
+			expect(
+				Locale.instance.pluralize( 'class' )
+			).toEqual( 'classes' )
 		})		
+
+		it( 'should register rules', () => {
+			Locale.useRule( 
+				word => word + ' fake',
+				'en' 
+			)
+			
+			expect(
+				Locale.instance.pluralize( 'something' )
+			).toEqual( 'something fake' )
+
+		})
 	})
 })

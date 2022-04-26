@@ -90,16 +90,20 @@ export class Locale {
 		Locale._registeredRules[ locale ].push( rule )
 	}
 
-	static rules = {
-		endsY: ( word: string, locale: string ) => {
+	private static rules = [
+		( word: string, locale: string ) => {
 			if ( locale!=='en' ) return
-			return word.slice(-1) === 'y'? word.slice( 0, -1 ) + 'ies' : word
+			return word.slice(-1) === 'y'? word.slice( 0, -1 ) + 'ies' : undefined
+		},
+		( word: string, locale: string ) => {
+			if ( locale !== 'en' ) return
+			return word.slice( -1 ) === 's' ? word + 'es' : undefined
 		}
-	}
+	]
 
 	private static _instance: Locale = null
 	private static _registeredConfig: LocaleConfig = {} as LocaleConfig
-	private static _registeredRules: {[ locale: string ]: Rule[] } = {}
+	private static _registeredRules: {[ locale: string ]: Rule[] } = { en: Locale.rules }
 	private _lang: string
 	private _localePath: string
 	private _pendingPromise = null
