@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/entropic-bond/localize-react/compare/v1.3.4...v1.4.0) (2022-04-26)
+
+
+### Features
+
+* pluralize words ending in s ([6a4b0ce](https://github.com/entropic-bond/localize-react/commit/6a4b0ce072985356b7572754d8b834e99e13dc38))
+
 ## [1.3.4](https://github.com/entropic-bond/localize-react/compare/v1.3.3...v1.3.4) (2022-04-26)
 
 
