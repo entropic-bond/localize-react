@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/entropic-bond/localize-react/compare/v1.4.0...v1.4.1) (2022-05-30)
+
+
+### Bug Fixes
+
+* ES6 ([1966103](https://github.com/entropic-bond/localize-react/commit/196610313f3bf2ac3162132990e90121bb4655bc))
+
 # [1.4.0](https://github.com/entropic-bond/localize-react/compare/v1.3.4...v1.4.0) (2022-04-26)
 
 
