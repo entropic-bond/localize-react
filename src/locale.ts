@@ -4,7 +4,7 @@ interface LocaleConfig {
 }
 
 export interface LocaleEntries {
-	[ key: string ]: string
+	[ key: string | symbol ]: string
 }
 
 type Rule = ( word: string, locale: string ) => string
