@@ -1,3 +1,10 @@
+## [1.4.2](https://github.com/entropic-bond/localize-react/compare/v1.4.1...v1.4.2) (2023-01-04)
+
+
+### Bug Fixes
+
+* LocalEntries to have key as symbol ([3d1e8fe](https://github.com/entropic-bond/localize-react/commit/3d1e8feb95a8d46052dac5269cba36ac8ed56111))
+
 ## [1.4.1](https://github.com/entropic-bond/localize-react/compare/v1.4.0...v1.4.1) (2022-05-30)
 
 
