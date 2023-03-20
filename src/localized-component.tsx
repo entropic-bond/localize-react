@@ -2,7 +2,7 @@ import { Component, useEffect, useState } from 'react'
 import { Locale, LocaleEntries } from './locale'
 
 export interface LocalizedState {
-	locale?: LocaleEntries
+	locale: LocaleEntries
 }
 
 export type StateWithLocale<S> = S & LocalizedState

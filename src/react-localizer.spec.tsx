@@ -15,7 +15,8 @@ class LocalizedWithDecorator extends Component<{}, SomeState> {
 	constructor( props: {}) {
 		super( props )
 		this.state = {
-			someState: 'a decorator nice starting point'
+			someState: 'a decorator nice starting point',
+			locale: {}
 		}
 	}
 
