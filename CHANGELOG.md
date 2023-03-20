@@ -1,3 +1,10 @@
+## [1.4.5](https://github.com/entropic-bond/localize-react/compare/v1.4.4...v1.4.5) (2023-03-20)
+
+
+### Bug Fixes
+
+* locale state not to be optional ([378c086](https://github.com/entropic-bond/localize-react/commit/378c086d2f1d99af5ac117e8e6e9576d52ef8001))
+
 ## [1.4.4](https://github.com/entropic-bond/localize-react/compare/v1.4.3...v1.4.4) (2023-01-18)
 
 
