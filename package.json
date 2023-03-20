@@ -1,6 +1,6 @@
 {
   "name": "@entropic-bond/localize-react",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "publishConfig": {
     "access": "public",
     "branches": [

@@ -1,3 +1,10 @@
+## [1.4.4](https://github.com/entropic-bond/localize-react/compare/v1.4.3...v1.4.4) (2023-01-18)
+
+
+### Bug Fixes
+
+* npm update ([55c43ba](https://github.com/entropic-bond/localize-react/commit/55c43ba3bff359fd4e500ea0c67ee3fd922965c7))
+
 ## [1.4.3](https://github.com/entropic-bond/localize-react/compare/v1.4.2...v1.4.3) (2023-01-18)
 
 
