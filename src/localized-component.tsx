@@ -84,7 +84,7 @@ export function localize( className: string ) {
  * @returns an object with the localized strings
  */
 export function useLocale( componentName: string ) {
-	const [ locale, setLocale ] = useState({} as { [key: string]: string })
+	const [ locale, setLocale ] = useState({} as LocaleEntries)
 
 	useEffect( () => {
 

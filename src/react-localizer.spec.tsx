@@ -24,7 +24,7 @@ class LocalizedWithDecorator extends Component<{}, SomeState> {
 		loadedSpy( locale )
 	}
 
-	render() {
+	override render() {
 		return (
 			<div>
 				<p data-testid="casa">Casa es { this.state.locale.house }</p>
@@ -38,16 +38,16 @@ class LocalizedWithClass extends LocalizedComponent<{}, SomeState> {
 	constructor( props: {}) {
 		super( props )
 		this.state = {
-			someState: 'a class nice starting point',
-			...this.state
+			...this.state,
+			someState: 'a class nice starting point'
 		}
 	}
 
-	onLoadLocale( locale: LocaleEntries ): void {
+	override onLoadLocale( locale: LocaleEntries ): void {
 		loadedSpy( locale )	
 	}
 
-	render() {
+	override render() {
 		return (
 			<div>
 				<p data-testid="casa">Casa es { this.state.locale.house }</p>

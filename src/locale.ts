@@ -4,15 +4,15 @@ interface LocaleConfig {
 }
 
 export interface LocaleEntries {
-	[ key: string | symbol ]: string
+	[ key: string | symbol ]: string & LocaleEntries
 }
 
-type Rule = ( word: string, locale: string ) => string
+type Rule = ( word: string, locale: string ) => string | undefined
 
 export class Locale {
 	private constructor( config: LocaleConfig ) {
-		this._table = null
-		this._pendingPromise = null
+		this._table = undefined
+		this._pendingPromise = undefined
 		this._lang = config.locale || 'en'
 		this._localePath = config.localePath || ''
 	}
@@ -24,10 +24,10 @@ export class Locale {
 		return this._instance
 	}
 
-	pluralize( word: string, amount: number = 0, pluralizer?: LocaleEntries | ( (word: string, locale: string ) => string ) ) {
+	pluralize( word: string, amount: number = 0, pluralizer?: Record<string, string> | Rule ) {
 		if ( amount === 1 ) return word
 
-		let plural: string
+		let plural: string | undefined
 
 		if ( typeof pluralizer !== 'function' ) {
 			plural = pluralizer?.[ word ]
@@ -40,7 +40,7 @@ export class Locale {
 		let i = 0
 		const rules = Locale._registeredRules[ this._lang ]
 		while ( !plural && rules && i < rules.length ) {
-			plural = rules[ i++ ]( word, this._lang )
+			plural = rules[ i++ ]!( word, this._lang )
 		}
 
 		return plural || word + 's'
@@ -51,7 +51,7 @@ export class Locale {
 			...this._registeredConfig,
 			...config
 		}
-		this._instance = null
+		this._instance = undefined
 	}
 
 	async get( component: string ): Promise< {} > {
@@ -67,14 +67,14 @@ export class Locale {
 				}
 			)
 		}
-		return this._table[ component ]
+		return this._table![ component ]
 	}
 
-	private fetchCache< T >( cachedPromise: ()=>Promise< T > ) {
+	private fetchCache< T >( cachedPromise: ()=>Promise< T > ): Promise<T> {
 		if ( !this._pendingPromise ) {
 			this._pendingPromise = new Promise< T >( resolve => resolve( cachedPromise() ) )
 		}
-		return this._pendingPromise
+		return this._pendingPromise as Promise<T>
 	}
 
 	private getLocaleFilePath( locale?: string ) {
@@ -87,7 +87,7 @@ export class Locale {
 
 	static useRule( rule: Rule, locale: string ) {
 		if ( !Locale._registeredRules[ locale ] ) Locale._registeredRules[ locale ] = []
-		Locale._registeredRules[ locale ].push( rule )
+		Locale._registeredRules[ locale ]!.push( rule )
 	}
 
 	private static rules = [
@@ -101,11 +101,11 @@ export class Locale {
 		}
 	]
 
-	private static _instance: Locale = null
+	private static _instance: Locale | undefined = undefined
 	private static _registeredConfig: LocaleConfig = {} as LocaleConfig
 	private static _registeredRules: {[ locale: string ]: Rule[] } = { en: Locale.rules }
 	private _lang: string
 	private _localePath: string
-	private _pendingPromise = null
-	private _table: {} = null
+	private _pendingPromise: Promise<unknown> | undefined = undefined
+	private _table: {} | undefined = undefined
 }
