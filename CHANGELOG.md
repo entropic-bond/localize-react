@@ -1,3 +1,10 @@
+## [1.6.1](https://github.com/entropic-bond/localize-react/compare/v1.6.0...v1.6.1) (2023-04-10)
+
+
+### Bug Fixes
+
+* safeLocalize to accept path props ([519e198](https://github.com/entropic-bond/localize-react/commit/519e198a43ee7d21f13d9a612a9a20577c35d040))
+
 # [1.6.0](https://github.com/entropic-bond/localize-react/compare/v1.5.0...v1.6.0) (2023-04-10)
 
 
