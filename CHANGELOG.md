@@ -1,3 +1,15 @@
+# [1.5.0](https://github.com/entropic-bond/localize-react/compare/v1.4.5...v1.5.0) (2023-04-09)
+
+
+### Bug Fixes
+
+* npm update ([1b80c12](https://github.com/entropic-bond/localize-react/commit/1b80c12c6b5ae1cef7db96a071f5eeb48939469e))
+
+
+### Features
+
+* strictNullCheck compliant ([47af9ae](https://github.com/entropic-bond/localize-react/commit/47af9aed0309ebe8c67c33f9e0e5381d357acb1c))
+
 ## [1.4.5](https://github.com/entropic-bond/localize-react/compare/v1.4.4...v1.4.5) (2023-03-20)
 
 
