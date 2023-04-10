@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/entropic-bond/localize-react/compare/v1.5.0...v1.6.0) (2023-04-10)
+
+
+### Features
+
+* safeLocalize ([ded5f18](https://github.com/entropic-bond/localize-react/commit/ded5f18a64e6934094f36beeb3a8f0456e4e3dd4))
+
 # [1.5.0](https://github.com/entropic-bond/localize-react/compare/v1.4.5...v1.5.0) (2023-04-09)
 
 
