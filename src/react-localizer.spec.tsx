@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { render } from '@testing-library/react'
 import fetchMock from 'fetch-mock'
-import { Locale, LocaleEntries } from './locale'
-import { localize, LocalizedState, LocalizedComponent, useLocale } from './localized-component'
+import { Locale } from './locale'
+import { localize, LocalizedState, LocalizedComponent, useLocale, safeLocalize, LocaleEntries } from './localized-component'
 
 interface SomeState extends LocalizedState {
 	someState: string
@@ -152,6 +152,10 @@ describe( 'React Component Localizer', ()=>{
 		await wrapper.findByText( 'Casa es albergo' )
 		expect( loadedSpy ).toHaveBeenCalledWith( expect.objectContaining({ house: 'albergo' }))
 	})
-	
-	
+
+	it( 'should get a safe translation', async ()=>{
+		const locale = await Locale.instance.get( 'LocalizedWithClass' )
+		expect( safeLocalize( locale, 'house' )).toBe( 'albergo' )
+		expect( safeLocalize( locale, 'notExistingKey' )).toBe( 'notExistingKey' )
+	})
 })

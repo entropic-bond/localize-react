@@ -1,8 +1,16 @@
 import { Component, useEffect, useState } from 'react'
-import { Locale, LocaleEntries } from './locale'
+import { Locale } from './locale'
+
+export interface LocaleEntries {
+	[ key: string | symbol ]: string & LocaleEntries
+}
 
 export interface LocalizedState {
 	locale: LocaleEntries
+}
+
+export function safeLocalize( locale: LocaleEntries, key: string ): string {
+	return locale[ key ] || key
 }
 
 export type StateWithLocale<S> = S & LocalizedState

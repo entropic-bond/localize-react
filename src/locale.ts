@@ -3,10 +3,6 @@ interface LocaleConfig {
 	localePath?: string
 }
 
-export interface LocaleEntries {
-	[ key: string | symbol ]: string & LocaleEntries
-}
-
 type Rule = ( word: string, locale: string ) => string | undefined
 
 export class Locale {
