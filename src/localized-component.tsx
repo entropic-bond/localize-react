@@ -9,8 +9,16 @@ export interface LocalizedState {
 	locale: LocaleEntries
 }
 
-export function safeLocalize( locale: LocaleEntries, key: string ): string {
-	return locale[ key ] || key
+export function createSafeLocalizerFor( locale: LocaleEntries, throwOnKeyNotFound = false ): ( keyPath: string ) => string {
+	return ( keyPath: string, throwOnNotFound = throwOnKeyNotFound ) => {
+		const value = keyPath.split('.').reduce(( acc: {}, prop: string ) => acc[ prop ], locale )
+		if ( value === undefined && throwOnNotFound ) throw Error( `Translation for ${ keyPath } not found` )
+		return value || keyPath
+	}
+}
+
+export function safeLocalize( locale: LocaleEntries, keyPath: string ): string {
+	return createSafeLocalizerFor( locale )( keyPath )
 }
 
 export type StateWithLocale<S> = S & LocalizedState
