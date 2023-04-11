@@ -11,8 +11,8 @@ export interface LocalizedState {
 
 /**
  * Creates a safe localizer function. The function will return the translated 
- * value associated to the keyPath. If the locale is undefined or the keyPath is
- * not found in the locale, the function will return the keyPath.
+ * value associated to the `keyPath`. If the locale is undefined or the `keyPath` is
+ * not found in the locale, the function will return the `keyPath`.
  * @param locale the locale to use
  * @param throwOnKeyNotFound if true, the function will throw an error if the keyPath is not found in the locale
  * @returns a function that will return the translated value associated to the keyPath
