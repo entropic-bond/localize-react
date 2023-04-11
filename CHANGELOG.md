@@ -1,3 +1,10 @@
+## [1.6.4](https://github.com/entropic-bond/localize-react/compare/v1.6.3...v1.6.4) (2023-04-11)
+
+
+### Bug Fixes
+
+* allow safeLocalize to force throw on key not found ([7802e6d](https://github.com/entropic-bond/localize-react/commit/7802e6d25a76c65b27ca9771bf0f42f78268a932))
+
 ## [1.6.3](https://github.com/entropic-bond/localize-react/compare/v1.6.2...v1.6.3) (2023-04-11)
 
 
