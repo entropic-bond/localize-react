@@ -9,6 +9,23 @@ export interface LocalizedState {
 	locale: LocaleEntries
 }
 
+/**
+ * Creates a safe localizer function. The function will return the translated 
+ * value associated to the keyPath. If the locale is undefined or the keyPath is
+ * not found in the locale, the function will return the keyPath.
+ * @param locale the locale to use
+ * @param throwOnKeyNotFound if true, the function will throw an error if the keyPath is not found in the locale
+ * @returns a function that will return the translated value associated to the keyPath
+ * @throws Error if the keyPath is not found in the locale and throwOnKeyNotFound is true
+ * @see safeLocalize
+ * @sample 
+ * ```ts
+ * const safeLocalizer = createSafeLocalizerFor( locale ) // returns the localizer function
+ * safeLocalizer( 'myComponent.myKey' ) // returns the translated value
+ * ```
+ * @sample const safeLocalizer = createSafeLocalizerFor( locale, true )
+ * 
+ */
 export function createSafeLocalizerFor( locale: LocaleEntries | undefined, throwOnKeyNotFound = false ): ( keyPath: string ) => string {
 	return ( keyPath: string, throwOnNotFound = throwOnKeyNotFound ) => {
 		if ( !locale ) return keyPath
@@ -18,8 +35,21 @@ export function createSafeLocalizerFor( locale: LocaleEntries | undefined, throw
 	}
 }
 
-export function safeLocalize( locale: LocaleEntries | undefined, keyPath: string ): string {
-	return createSafeLocalizerFor( locale )( keyPath )
+/**
+ * Returns the translated value associated to the keyPath. If the locale is
+ * undefined or the keyPath is not found in the locale, the function will return
+ * the keyPath.
+ * @param locale the locale to use
+ * @param keyPath the key path to the value to return
+ * @param throwOnKeyNotFound if true, the function will throw an error if the keyPath is not found in the locale
+ * @returns the translated value associated to the keyPath
+ * @throws Error if the keyPath is not found in the locale and throwOnKeyNotFound is true
+ * @see createSafeLocalizerFor
+ * @sample safeLocalize( locale, 'myComponent.myKey' )
+ * @sample safeLocalize( locale, 'myRootKey', true )
+ */
+export function safeLocalize( locale: LocaleEntries | undefined, keyPath: string, throwOnKeyNotFound = false ): string {
+	return createSafeLocalizerFor( locale, throwOnKeyNotFound )( keyPath )
 }
 
 export type StateWithLocale<S> = S & LocalizedState
