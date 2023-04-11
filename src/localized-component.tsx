@@ -18,7 +18,7 @@ export function createSafeLocalizerFor( locale: LocaleEntries | undefined, throw
 	}
 }
 
-export function safeLocalize( locale: LocaleEntries, keyPath: string ): string {
+export function safeLocalize( locale: LocaleEntries | undefined, keyPath: string ): string {
 	return createSafeLocalizerFor( locale )( keyPath )
 }
 
