@@ -1,3 +1,10 @@
+## [1.6.3](https://github.com/entropic-bond/localize-react/compare/v1.6.2...v1.6.3) (2023-04-11)
+
+
+### Bug Fixes
+
+* safeLocalize and createSafeLocalizerFor to accept undefined ([26f6433](https://github.com/entropic-bond/localize-react/commit/26f6433de8fdfc6ce4f9faa3a061649277125399))
+
 ## [1.6.2](https://github.com/entropic-bond/localize-react/compare/v1.6.1...v1.6.2) (2023-04-11)
 
 
