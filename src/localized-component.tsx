@@ -9,8 +9,9 @@ export interface LocalizedState {
 	locale: LocaleEntries
 }
 
-export function createSafeLocalizerFor( locale: LocaleEntries, throwOnKeyNotFound = false ): ( keyPath: string ) => string {
+export function createSafeLocalizerFor( locale: LocaleEntries | undefined, throwOnKeyNotFound = false ): ( keyPath: string ) => string {
 	return ( keyPath: string, throwOnNotFound = throwOnKeyNotFound ) => {
+		if ( !locale ) return keyPath
 		const value = keyPath.split('.').reduce(( acc: {}, prop: string ) => acc[ prop ], locale )
 		if ( value === undefined && throwOnNotFound ) throw Error( `Translation for ${ keyPath } not found` )
 		return value || keyPath

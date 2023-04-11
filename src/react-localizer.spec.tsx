@@ -175,4 +175,11 @@ describe( 'React Component Localizer', ()=>{
 			()=> loc( 'carSedan' )
 		).toThrow()
 	})
+
+	it( 'should not throw when locale is undefined', async ()=>{ 
+		const loc = createSafeLocalizerFor( undefined )
+		expect( 
+			()=> loc( 'house' )
+		).not.toThrow()
+	})
 })
