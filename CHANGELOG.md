@@ -1,3 +1,10 @@
+## [1.6.6](https://github.com/entropic-bond/localize-react/compare/v1.6.5...v1.6.6) (2023-07-18)
+
+
+### Bug Fixes
+
+* useRule is now usePluralizerRule (useRule) is deprected ([27b85e2](https://github.com/entropic-bond/localize-react/commit/27b85e2f689f3e075209f2480670ba5875df40b9))
+
 ## [1.6.5](https://github.com/entropic-bond/localize-react/compare/v1.6.4...v1.6.5) (2023-07-18)
 
 
