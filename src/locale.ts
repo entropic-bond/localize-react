@@ -13,7 +13,7 @@ export class Locale {
 		this._localePath = config.localePath || ''
 	}
 
-	public static get instance() {
+	public static get instance(): Locale {
 		if ( !this._instance ) {
 			this._instance = new Locale( this._registeredConfig )
 		}
@@ -21,7 +21,7 @@ export class Locale {
 	}
 
 	static get currentLocale() {
-		return Locale._registeredConfig.locale
+		return Locale._registeredConfig.locale || Locale.instance._lang
 	}
 
 	/**
