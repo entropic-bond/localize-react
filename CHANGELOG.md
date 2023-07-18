@@ -1,3 +1,10 @@
+## [1.6.5](https://github.com/entropic-bond/localize-react/compare/v1.6.4...v1.6.5) (2023-07-18)
+
+
+### Bug Fixes
+
+* pluralizer adds s only in en and es ([09771a0](https://github.com/entropic-bond/localize-react/commit/09771a06fcb629bfa95ffc59dca4d0c27c1a6e3a))
+
 ## [1.6.4](https://github.com/entropic-bond/localize-react/compare/v1.6.3...v1.6.4) (2023-04-11)
 
 
