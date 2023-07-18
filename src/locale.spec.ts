@@ -109,7 +109,7 @@ describe( 'Locale', ()=> {
 		})		
 
 		it( 'should register rules', () => {
-			Locale.useRule( 
+			Locale.usePluralizerRule( 
 				word => word + ' fake',
 				'en' 
 			)

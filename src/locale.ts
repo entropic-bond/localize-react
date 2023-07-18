@@ -20,6 +20,10 @@ export class Locale {
 		return this._instance
 	}
 
+	static get currentLocale() {
+		return Locale._registeredConfig.locale
+	}
+
 	/**
 	 * Returns the plural form of a word
 	 * 
@@ -89,30 +93,48 @@ export class Locale {
 		return this._lang
 	}
 
-	static useRule( rule: Rule, locale: string ) {
+	/**
+	 * Registers a rule to pluralize words
+	 * 
+	 * @param rule a function that returns the plural form of a word
+	 * @param locale the locale to use the rule
+	 */
+	static usePluralizerRule( rule: Rule, locale: string ) {
 		if ( !Locale._registeredRules[ locale ] ) Locale._registeredRules[ locale ] = []
+		if ( Locale._registeredRules[ locale ]!.indexOf( rule ) >= 0 ) return
 		Locale._registeredRules[ locale ]!.unshift( rule )
 	}
 
-	private static rules = [
-		( word: string, locale: string ) => {
-			if ( locale!=='en' ) return
-			return word.slice(-1) === 'y'? word.slice( 0, -1 ) + 'ies' : undefined
-		},
-		( word: string, locale: string ) => {
-			if ( locale !== 'en' ) return
-			return word.slice( -1 ) === 's' ? word + 'es' : undefined
-		},
-		( word: string, locale: string ) => {
-			const mainLang = locale.slice( 0, 2 )
-			if ( !( mainLang === 'en' || mainLang === 'es' ) ) return
-			return word + 's'
-		}
-	]
+	/**
+	 * Registers a rule to pluralize words
+	 * @deprecated use usePluralizerRule instead
+	 */
+	static useRule( rule: Rule, locale: string ) {
+		return Locale.usePluralizerRule( rule, locale )
+	}
+
+	private static defaultRules = {
+		en: [
+			( word: string, locale: string ) => {
+				return word.slice(-1) === 'y'? word.slice( 0, -1 ) + 'ies' : undefined
+			},
+			( word: string, locale: string ) => {
+				return word.slice( -1 ) === 's' ? word + 'es' : undefined
+			},
+			( word: string, locale: string ) => {
+				return word + 's'
+			}
+		],
+		es: [
+			( word: string, locale: string ) => {
+				return word + 's'
+			}
+		]
+	}
 
 	private static _instance: Locale | undefined = undefined
 	private static _registeredConfig: LocaleConfig = {} as LocaleConfig
-	private static _registeredRules: {[ locale: string ]: Rule[] } = { en: Locale.rules }
+	private static _registeredRules: {[ locale: string ]: Rule[] } = Locale.defaultRules
 	private _lang: string
 	private _localePath: string
 	private _pendingPromise: Promise<unknown> | undefined = undefined
