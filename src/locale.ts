@@ -20,6 +20,14 @@ export class Locale {
 		return this._instance
 	}
 
+	/**
+	 * Returns the plural form of a word
+	 * 
+	 * @param word to pluralize
+	 * @param amount if the word to pluralize is a number, the amount is used to determine the plural form
+	 * @param pluralizer a map of words to their plural form or a function that returns the plural form
+	 * @returns the plural form of the word
+	 */
 	pluralize( word: string, amount: number = 0, pluralizer?: Record<string, string> | Rule ) {
 		if ( amount === 1 ) return word
 
@@ -36,10 +44,10 @@ export class Locale {
 		let i = 0
 		const rules = Locale._registeredRules[ this._lang ]
 		while ( !plural && rules && i < rules.length ) {
-			plural = rules[ i++ ]!( word, this._lang )
+			plural = rules[ i++ ]?.( word, this._lang )
 		}
 
-		return plural || word + 's'
+		return plural ?? word
 	}
 
 	static config( config: LocaleConfig ) {
@@ -83,7 +91,7 @@ export class Locale {
 
 	static useRule( rule: Rule, locale: string ) {
 		if ( !Locale._registeredRules[ locale ] ) Locale._registeredRules[ locale ] = []
-		Locale._registeredRules[ locale ]!.push( rule )
+		Locale._registeredRules[ locale ]!.unshift( rule )
 	}
 
 	private static rules = [
@@ -94,6 +102,11 @@ export class Locale {
 		( word: string, locale: string ) => {
 			if ( locale !== 'en' ) return
 			return word.slice( -1 ) === 's' ? word + 'es' : undefined
+		},
+		( word: string, locale: string ) => {
+			const mainLang = locale.slice( 0, 2 )
+			if ( !( mainLang === 'en' || mainLang === 'es' ) ) return
+			return word + 's'
 		}
 	]
 
