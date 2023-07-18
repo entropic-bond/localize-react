@@ -1,3 +1,10 @@
+## [1.6.8](https://github.com/entropic-bond/localize-react/compare/v1.6.7...v1.6.8) (2023-07-18)
+
+
+### Bug Fixes
+
+* better rules for en and es ([779eeea](https://github.com/entropic-bond/localize-react/commit/779eeea4c4f627011f2ca423a69c4de65fbbad27))
+
 ## [1.6.7](https://github.com/entropic-bond/localize-react/compare/v1.6.6...v1.6.7) (2023-07-18)
 
 
