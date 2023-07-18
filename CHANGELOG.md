@@ -1,3 +1,10 @@
+## [1.6.7](https://github.com/entropic-bond/localize-react/compare/v1.6.6...v1.6.7) (2023-07-18)
+
+
+### Bug Fixes
+
+* better currentLocale ([277c17d](https://github.com/entropic-bond/localize-react/commit/277c17d17219bd5ec58b2c604a2b6f5b3cd18399))
+
 ## [1.6.6](https://github.com/entropic-bond/localize-react/compare/v1.6.5...v1.6.6) (2023-07-18)
 
 
