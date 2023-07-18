@@ -115,18 +115,26 @@ export class Locale {
 
 	private static defaultRules = {
 		en: [
-			( word: string, locale: string ) => {
-				return word.slice(-1) === 'y'? word.slice( 0, -1 ) + 'ies' : undefined
-			},
-			( word: string, locale: string ) => {
-				return word.slice( -1 ) === 's' ? word + 'es' : undefined
-			},
-			( word: string, locale: string ) => {
+			( word: string ) => {
+				if ( word.slice(-1) === 'f' ) return word.slice( 0, -1 ) + 'ves'
+				if ( word.slice(-1) === 'o' ) return word.slice( 0, -1 ) + 'oes'
+				if ( word.slice(-1) === 'x' ) return word.slice( 0, -1 ) + 'xes'
+				if ( word.slice(-1) === 'h' ) return word.slice( 0, -1 ) + 'hes'
+				if ( word.slice(-1) === 's' ) return word.slice( 0, -1 ) + 'ses'
+				if ( word.slice(-1) === 'y' ) return word.slice( 0, -1 ) + 'ies'
+				if ( word.slice(-1) === 'z' ) return word.slice( 0, -1 ) + 'zes'
+				
 				return word + 's'
 			}
 		],
 		es: [
-			( word: string, locale: string ) => {
+			( word: string ) => {
+				if ( word.slice(-1) === 'l' ) return word.slice( 0, -1 ) + 'les'
+				if ( word.slice(-1) === 'n' ) return word.slice( 0, -1 ) + 'nes'
+				if ( word.slice(-1) === 'r' ) return word.slice( 0, -1 ) + 'res'
+				if ( word.slice(-1) === 's' ) return word.slice( 0, -1 ) + 'ses'
+				if ( word.slice(-1) === 'z' ) return word.slice( 0, -1 ) + 'ces'
+
 				return word + 's'
 			}
 		]
