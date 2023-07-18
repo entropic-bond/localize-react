@@ -132,7 +132,6 @@ export class Locale {
 				if ( word.slice(-1) === 'l' ) return word.slice( 0, -1 ) + 'les'
 				if ( word.slice(-1) === 'n' ) return word.slice( 0, -1 ) + 'nes'
 				if ( word.slice(-1) === 'r' ) return word.slice( 0, -1 ) + 'res'
-				if ( word.slice(-1) === 's' ) return word.slice( 0, -1 ) + 'ses'
 				if ( word.slice(-1) === 'z' ) return word.slice( 0, -1 ) + 'ces'
 
 				return word + 's'
