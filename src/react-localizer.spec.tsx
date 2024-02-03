@@ -8,7 +8,7 @@ interface SomeState extends LocalizedState {
 	someState: string
 }
 
-let loadedSpy = jest.fn()
+let loadedSpy = vi.fn()
 
 @localize( 'LocalizedWithDecorator' )
 class LocalizedWithDecorator extends Component<{}, SomeState> {

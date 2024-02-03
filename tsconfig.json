@@ -1,7 +1,7 @@
 {
 	"compileOnSave": false,
 	"compilerOptions": {
-		"target": "ES6", 
+		"target": "ES2018", 
 		"module": "ESNext", 
 		"esModuleInterop": true,
 		"moduleResolution": "node",
@@ -23,6 +23,9 @@
 		"noImplicitOverride": true, // this causes errors when overriding methods of base classes. Annoying for React components
 		"forceConsistentCasingInFileNames": true,
 		"noImplicitThis": true,
+		"types": [
+			"vitest/globals"
+		]
 	},
 	"include": ["./src"]
 }
