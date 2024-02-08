@@ -1,3 +1,15 @@
+# [1.7.0](https://github.com/entropic-bond/localize-react/compare/v1.6.8...v1.7.0) (2024-02-08)
+
+
+### Bug Fixes
+
+* missing settings ([eeb562b](https://github.com/entropic-bond/localize-react/commit/eeb562b17db7d1ad83db73efb75aef347b6651fa))
+
+
+### Features
+
+* esm and cjs ([34d4320](https://github.com/entropic-bond/localize-react/commit/34d4320950c6c7aaf1ac4b025fc957245a852a55))
+
 ## [1.6.8](https://github.com/entropic-bond/localize-react/compare/v1.6.7...v1.6.8) (2023-07-18)
 
 

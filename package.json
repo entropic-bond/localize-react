@@ -1,7 +1,7 @@
 {
   "name": "@entropic-bond/localize-react",
   "type": "module",
-  "version": "1.6.8",
+  "version": "1.7.0",
   "description": "Localize react components",
   "main": "lib/entropic-bond-localize-react.umd.cjs",
   "module": "lib/entropic-bond-localize-react.js",
