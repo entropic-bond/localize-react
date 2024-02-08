@@ -1,3 +1,10 @@
+## [1.7.1](https://github.com/entropic-bond/localize-react/compare/v1.7.0...v1.7.1) (2024-02-08)
+
+
+### Bug Fixes
+
+* sync package-lock ([882b669](https://github.com/entropic-bond/localize-react/commit/882b66919408526117acd52b8fa0d357cd10740b))
+
 # [1.7.0](https://github.com/entropic-bond/localize-react/compare/v1.6.8...v1.7.0) (2024-02-08)
 
 
