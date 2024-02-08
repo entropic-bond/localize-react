@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { render } from '@testing-library/react'
-import fetchMock from 'fetch-mock'
+import fetchMock from 'fetch-mock/esm/client'
 import { Locale } from './locale'
 import { localize, LocalizedState, LocalizedComponent, useLocale, safeLocalize, LocaleEntries, createSafeLocalizerFor } from './localized-component'
 

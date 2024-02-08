@@ -1,4 +1,4 @@
-import fetchMock from "fetch-mock"
+import fetchMock from "fetch-mock/esm/client"
 import { Locale } from "./locale"
 
 describe( 'Locale', ()=> {
@@ -18,7 +18,9 @@ describe( 'Locale', ()=> {
 		}})
 	})
 
-	afterEach( () => fetchMock.restore() )
+	afterEach( () => {
+		fetchMock.restore() 
+	})
 
 	it( 'should translate string', async()=> {
 		expect( await Locale.instance.get('hi') ).toEqual( 'Hello' )
