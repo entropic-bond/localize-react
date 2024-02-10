@@ -13,7 +13,18 @@ export default defineConfig({
 		lib: {
 			entry: resolve( __dirname, 'src/index.ts' ),
 			name: 'entropic-bond-localize-react',
-			fileName: 'entropic-bond-localize-react'
+			fileName: 'entropic-bond-localize-react',
+			formats: ['es', 'umd', 'cjs'],
+		},
+		sourcemap: true,
+		rollupOptions: {
+			external: ['react', 'react-dom'],
+			output: {
+				globals: {
+					react: 'React',
+					'react-dom': 'ReactDOM',
+				}
+			}
 		},
 		"outDir": "lib",
 	},
