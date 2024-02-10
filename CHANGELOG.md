@@ -1,3 +1,10 @@
+## [1.7.2](https://github.com/entropic-bond/localize-react/compare/v1.7.1...v1.7.2) (2024-02-10)
+
+
+### Bug Fixes
+
+* invalid react hook call ([be25a61](https://github.com/entropic-bond/localize-react/commit/be25a610075e5fc8a2b7beccf2b714148f470e2a))
+
 ## [1.7.1](https://github.com/entropic-bond/localize-react/compare/v1.7.0...v1.7.1) (2024-02-08)
 
 
