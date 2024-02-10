@@ -26,7 +26,7 @@ export default defineConfig({
 				}
 			}
 		},
-		"outDir": "lib",
+		outDir: 'lib',
 	},
 	plugins: [
 		dts()
