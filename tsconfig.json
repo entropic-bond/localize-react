@@ -14,7 +14,7 @@
 		],
 		"declaration": true,
 		"experimentalDecorators": true,
-		"jsx": "react",
+		"jsx": "react-jsx",
 		"allowJs": true,
 		"isolatedModules": true,
 		"strictNullChecks": true, // should be enabled progressively to end having all code base compliant with this rule
