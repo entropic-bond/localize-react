@@ -1,3 +1,10 @@
+## [1.7.4](https://github.com/entropic-bond/localize-react/compare/v1.7.3...v1.7.4) (2025-04-07)
+
+
+### Bug Fixes
+
+* give preference to component locale instead global locale ([8d43b0e](https://github.com/entropic-bond/localize-react/commit/8d43b0e9fba617698212d5923ca3c7247b8b62c7))
+
 ## [1.7.3](https://github.com/entropic-bond/localize-react/compare/v1.7.2...v1.7.3) (2025-03-04)
 
 
