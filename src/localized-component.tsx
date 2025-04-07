@@ -72,8 +72,8 @@ export abstract class LocalizedComponent<P={}, S extends LocalizedState=Localize
 		this.state = { locale: {} } as S
 
 		Promise.all([
-			Locale.instance.get( this.className() ),
-			Locale.instance.get( 'Generic' )
+			Locale.instance.get( 'Generic' ),
+			Locale.instance.get( this.className() )
 		]).then( resp => {
 			const locale = { ...resp[0], ...resp[1] }
 
