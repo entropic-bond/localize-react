@@ -1,3 +1,10 @@
+## [1.7.3](https://github.com/entropic-bond/localize-react/compare/v1.7.2...v1.7.3) (2025-03-04)
+
+
+### Bug Fixes
+
+* update entropic-bond ([784c690](https://github.com/entropic-bond/localize-react/commit/784c69098a24c8decac6218deeb6348d7590f07e))
+
 ## [1.7.2](https://github.com/entropic-bond/localize-react/compare/v1.7.1...v1.7.2) (2024-02-10)
 
 
