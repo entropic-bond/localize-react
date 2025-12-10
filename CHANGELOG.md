@@ -1,3 +1,11 @@
+## [1.7.5](https://github.com/entropic-bond/localize-react/compare/v1.7.4...v1.7.5) (2025-12-10)
+
+
+### Bug Fixes
+
+* npm-upgrade ([5be702e](https://github.com/entropic-bond/localize-react/commit/5be702e87c77bd59eb0fd29b57cc1a7cb58227be))
+* update Node.js version to 24.x in release workflow ([18d9a79](https://github.com/entropic-bond/localize-react/commit/18d9a798968af4fe9d472f1ec05d2f1f9a1fb9b8))
+
 ## [1.7.4](https://github.com/entropic-bond/localize-react/compare/v1.7.3...v1.7.4) (2025-04-07)
 
 
