@@ -1,3 +1,10 @@
+## [1.7.7](https://github.com/entropic-bond/localize-react/compare/v1.7.6...v1.7.7) (2026-06-30)
+
+
+### Bug Fixes
+
+* update to ts 6.x.x ([dd5ae84](https://github.com/entropic-bond/localize-react/commit/dd5ae84bb664c52e0e8300c075c76d67dd67e654))
+
 ## [1.7.6](https://github.com/entropic-bond/localize-react/compare/v1.7.5...v1.7.6) (2026-03-12)
 
 
