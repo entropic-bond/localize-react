@@ -33,7 +33,7 @@ describe( 'Locale', ()=> {
 
 	it( 'should work for named modules', async ()=>{
 		Locale.config({ locale: 'en' })
-		const module:{} = await Locale.instance.get( 'moduleA' )
+		const module = (await Locale.instance.get( 'moduleA' ))!
 		expect( module[ 'bye' ] ).toEqual( 'Bye' )
 		expect( module[ 'goodMorning' ] ).toEqual( 'Good Morning' )
 	})
@@ -42,7 +42,7 @@ describe( 'Locale', ()=> {
 		expect( fetchMock.calls().length ).toBe( 0 )
 		Locale.instance.get( 'moduleA' )
 		Locale.instance.get( 'hi' )
-		Locale.instance.get( 'moduleA' )['bye']
+		await Locale.instance.get( 'moduleA' )
 		expect( fetchMock.calls('locales/en.json').length ).toBe( 1 )
 	})
 

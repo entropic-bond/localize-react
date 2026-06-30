@@ -1,3 +1,5 @@
+import { LocaleEntries } from './localized-component'
+
 interface LocaleConfig {
 	locale?: string
 	localePath?: string
@@ -62,7 +64,7 @@ export class Locale {
 		this._instance = undefined
 	}
 
-	async get( component: string ): Promise< {} > {
+	async get( component: string ): Promise<LocaleEntries | undefined> {
 		if ( !this._table ) {
 			this._table = await this.fetchCache(
 				async ()=>{
@@ -75,7 +77,7 @@ export class Locale {
 				}
 			)
 		}
-		return this._table![ component ]
+		return this._table![ component ] as LocaleEntries | undefined
 	}
 
 	private fetchCache< T >( cachedPromise: ()=>Promise< T > ): Promise<T> {
@@ -145,5 +147,5 @@ export class Locale {
 	private _lang: string
 	private _localePath: string
 	private _pendingPromise: Promise<unknown> | undefined = undefined
-	private _table: {} | undefined = undefined
+	private _table: LocaleEntries | undefined = undefined
 }

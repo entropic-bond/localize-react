@@ -27,7 +27,7 @@ class LocalizedWithDecorator extends Component<{}, SomeState> {
 	override render() {
 		return (
 			<div>
-				<p data-testid="casa">Casa es { this.state.locale.house }</p>
+				<p data-testid="casa">Casa es { this.state.locale.house as string }</p>
 				<span>{ this.state.someState }</span>
 			</div>
 		)
@@ -50,7 +50,7 @@ class LocalizedWithClass extends LocalizedComponent<{}, SomeState> {
 	override render() {
 		return (
 			<div>
-				<p data-testid="casa">Casa es { this.state.locale.house }</p>
+				<p data-testid="casa">Casa es { this.state.locale.house as string }</p>
 				<span>{ this.state.someState }</span>
 			</div>
 		)
@@ -66,7 +66,7 @@ function LocalizedWithHook() {
 
 	return (
 		<div>
-			<p data-testid="casa">Casa es { locale.house }</p>
+			<p data-testid="casa">Casa es { locale.house as string }</p>
 		</div>
 	)
 }

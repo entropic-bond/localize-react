@@ -2,7 +2,7 @@ import { Component, useEffect, useState } from 'react'
 import { Locale } from './locale'
 
 export interface LocaleEntries {
-	[ key: string | symbol ]: string & LocaleEntries
+	[ key: string ]: string | LocaleEntries
 }
 
 export interface LocalizedState {
@@ -29,9 +29,12 @@ export interface LocalizedState {
 export function createSafeLocalizerFor( locale: LocaleEntries | undefined, throwOnKeyNotFound = false ): ( keyPath: string ) => string {
 	return ( keyPath: string, throwOnNotFound = throwOnKeyNotFound ) => {
 		if ( !locale ) return keyPath
-		const value = keyPath.split('.').reduce(( acc: {}, prop: string ) => acc[ prop ], locale )
+		const value = keyPath.split('.').reduce< unknown >( ( acc, prop ) => {
+			if ( !acc || typeof acc !== 'object' ) return undefined
+			return ( acc as Record<string, unknown> )[ prop ]
+		}, locale )
 		if ( value === undefined && throwOnNotFound ) throw Error( `Translation for ${ keyPath } not found` )
-		return value || keyPath
+		return typeof value === 'string' ? value : keyPath
 	}
 }
 
@@ -108,17 +111,17 @@ export abstract class LocalizedComponent<P={}, S extends LocalizedState=Localize
  * @returns decorator
  */
 export function localize( className: string ) {
-	return function<T extends { new (...args: any[]): {} }>(constructor: T) {
+	return function<T extends { new (...args: any[]): Record<string, any> }>(constructor: T) {
 		return class extends constructor {
-				state = { locale: {}, ...this['state'] }
-				loadLocale = Promise.all([
-					Locale.instance.get( className ),
-					Locale.instance.get( 'Generic' )
-				]).then( resp => {
-					const locale = { ...resp[0], ...resp[1] }
-					this['setState']({ locale })
-					this['onLoadLocale'] && this['onLoadLocale']( locale )
-				})
+			declare state: Record<string, any>
+			loadLocale = Promise.all([
+				Locale.instance.get( className ),
+				Locale.instance.get( 'Generic' )
+			]).then( resp => {
+				const locale = { ...resp[0], ...resp[1] }
+				this.setState({ locale })
+				this.onLoadLocale?.( locale )
+			})
 		}
 	}
 }
