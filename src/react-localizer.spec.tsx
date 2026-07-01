@@ -73,7 +73,7 @@ function LocalizedWithHook() {
 
 describe( 'React Component Localizer', ()=>{
 	beforeEach(()=>{
-		fetchMock.mock('locales/en.json', ()=> { return {
+		fetchMock.route('locales/en.json', ()=> { return {
 			"hi": "Hello",
 			"LocalizedWithClass": {
 				"house": "albergo",
@@ -89,13 +89,14 @@ describe( 'React Component Localizer', ()=>{
 				"house": "morada"
 			}
 		}})
+		fetchMock.mockGlobal()
 		Locale.config({
 			localePath: 'locales' 
 		})
 	})
 
 	afterEach(()=>{
-		fetchMock.restore();
+		fetchMock.hardReset();
 		loadedSpy.mockReset()
 	});
 

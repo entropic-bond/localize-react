@@ -6,20 +6,21 @@ describe( 'Locale', ()=> {
 		Locale.config({
 			localePath: 'locales' 
 		})
-		fetchMock.mock('locales/en.json', ()=> { return {
+		fetchMock.route('locales/en.json', ()=> { return {
 			"hi": "Hello",
 			"moduleA": {
 				"bye": "Bye",
 				"goodMorning": "Good Morning"
 			}
 		}})
-		fetchMock.mock('locales/es.json', ()=> { return {
+		fetchMock.route('locales/es.json', ()=> { return {
 			"hi": "Hola!!!"
 		}})
+		fetchMock.mockGlobal()
 	})
 
 	afterEach( () => {
-		fetchMock.restore() 
+		fetchMock.hardReset() 
 	})
 
 	it( 'should translate string', async()=> {
@@ -39,11 +40,11 @@ describe( 'Locale', ()=> {
 	})
 
 	it( 'should retrieve data only once in successive calls to get (cache calls)', async ()=>{
-		expect( fetchMock.calls().length ).toBe( 0 )
+		expect( fetchMock.callHistory.calls().length ).toBe( 0 )
 		Locale.instance.get( 'moduleA' )
 		Locale.instance.get( 'hi' )
 		await Locale.instance.get( 'moduleA' )
-		expect( fetchMock.calls('locales/en.json').length ).toBe( 1 )
+		expect( fetchMock.callHistory.calls('locales/en.json').length ).toBe( 1 )
 	})
 
 	describe( 'Pluralizer', ()=>{
