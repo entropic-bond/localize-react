@@ -28,6 +28,7 @@ export interface LocalizedState {
  */
 export function createSafeLocalizerFor( locale: LocaleEntries | undefined, throwOnKeyNotFound = false ): ( keyPath: string ) => string {
 	return ( keyPath: string, throwOnNotFound = throwOnKeyNotFound ) => {
+		if ( !keyPath ) return 'Locale key not found!'
 		if ( !locale ) return keyPath
 		const value = keyPath.split('.').reduce< unknown >( ( acc, prop ) => {
 			if ( !acc || typeof acc !== 'object' ) return undefined
