@@ -1,3 +1,10 @@
+## [1.7.8](https://github.com/entropic-bond/localize-react/compare/v1.7.7...v1.7.8) (2026-07-02)
+
+
+### Bug Fixes
+
+* handle empty keyPath in createSafeLocalizerFor function ([c454725](https://github.com/entropic-bond/localize-react/commit/c454725d676efbb5c965a3a6fce19e7e62b9d1c2))
+
 ## [1.7.7](https://github.com/entropic-bond/localize-react/compare/v1.7.6...v1.7.7) (2026-06-30)
 
 
